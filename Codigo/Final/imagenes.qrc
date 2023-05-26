@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/menu1">
+        <file>menu2.jpg</file>
+        <file>aves.png</file>
+        <file>bala(2).png</file>
+        <file>fuego.png</file>
+        <file>menu.jpg</file>
+        <file>menu1.jpg</file>
+        <file>pngegg (1).png</file>
+        <file>pngwing.com (1).png</file>
+        <file>video_preview_0000.jpg</file>
+    </qresource>
+</RCC>
