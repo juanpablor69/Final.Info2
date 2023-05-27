@@ -1,4 +1,4 @@
-#ifndef MAINWINDOW_H
+﻿#ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
 #include <QMainWindow>
@@ -7,6 +7,7 @@
 #include <QWidget>
 
 #include "juego.h"
+#include "avion.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -26,9 +27,13 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    QGraphicsScene *menu;
+    QGraphicsScene *menu, *mundo1;
     Juego *GAME;
+
     void vermenu();
     void vernivel1();
+    void escena_Menu(); //Funcion para configurar el menu
+    void nivel_1();
+    void keyPressEvent(QKeyEvent *evento);
 };
 #endif // MAINWINDOW_H
