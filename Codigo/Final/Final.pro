@@ -12,12 +12,14 @@ SOURCES += \
     avion.cpp \
     juego.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    misil.cpp
 
 HEADERS += \
     avion.h \
     juego.h \
-    mainwindow.h
+    mainwindow.h \
+    misil.h
 
 FORMS += \
     mainwindow.ui

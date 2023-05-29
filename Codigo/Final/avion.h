@@ -15,6 +15,9 @@ public:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,QWidget *widget = nullptr);
     void MovArriba();
     void MovAbajo();
+
+    double getPosx() const;
+    double getPosy() const;
 };
 
 #endif // AVION_H

@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/menu1">
+    <qresource prefix="/images">
         <file>menu2.jpg</file>
         <file>aves.png</file>
         <file>bala(2).png</file>
