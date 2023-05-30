@@ -33,17 +33,27 @@ void MainWindow::escena_Menu()
 void MainWindow::on_nivel1_clicked()
 {
     ui->nivel1->hide();
-
     GAME->nivel_1();
     ui->graphicsView->setScene(GAME->mundo1);
+    GAME->Funlimites();
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *evento)
 {
-    if(evento->key()==Qt::Key_W)
-        GAME->air->MovArriba();
-    else if(evento->key()==Qt::Key_S)
-        GAME->air->MovAbajo();
+    if(evento->key()==Qt::Key_W) //Arriba
+    {
+        if (!GAME->ColAv_lim())
+            GAME->air->MovArriba();
+        else
+            GAME->air->MovAbajo();
+    }
+    else if(evento->key()==Qt::Key_S) //Abajo
+    {
+        if (!GAME->ColAv_lim())
+            GAME->air->MovAbajo();
+        else
+            GAME->air->MovArriba();
+    }
     else if(evento->key()==Qt::Key_Q)
     {
         posXAv=(GAME->air->getPosx())+5;

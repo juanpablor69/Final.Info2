@@ -11,6 +11,7 @@ CONFIG += c++11
 SOURCES += \
     avion.cpp \
     juego.cpp \
+    limites.cpp \
     main.cpp \
     mainwindow.cpp \
     misil.cpp
@@ -18,6 +19,7 @@ SOURCES += \
 HEADERS += \
     avion.h \
     juego.h \
+    limites.h \
     mainwindow.h \
     misil.h
 

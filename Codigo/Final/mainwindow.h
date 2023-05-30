@@ -6,10 +6,12 @@
 #include <QKeyEvent>
 #include <QWidget>
 #include <QTimer>
+#include <QList>
 
 #include "juego.h"
 #include "avion.h"
 #include "misil.h"
+#include "limites.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -34,12 +36,14 @@ private:
     Juego *GAME;
     QTimer *timer;
 
+    int posXAv,posYAv; // Posicion del avion
+
     void vermenu();
     void vernivel1();
     void escena_Menu(); //Funcion para configurar el menu
     void nivel_1();
     void act_misil();
-    int posXAv,posYAv;
+
     void keyPressEvent(QKeyEvent *evento);
 };
 #endif // MAINWINDOW_H
