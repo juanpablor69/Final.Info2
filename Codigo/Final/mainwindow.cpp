@@ -10,6 +10,10 @@ MainWindow::MainWindow(QWidget *parent)
     vermenu(); //Inicializa el juego
     timer= new QTimer();
     connect(timer,SIGNAL(timeout()),this,SLOT(Actualizar()));
+    timer_Bfuego= new QTimer();
+    connect(timer_Bfuego,SIGNAL(timeout()),this,SLOT(Act_MovFuego()));
+
+
 }
 
 MainWindow::~MainWindow()
@@ -30,20 +34,33 @@ void MainWindow::escena_Menu()
     menu->setBackgroundBrush(QImage(":/images/menu2.jpg"));
 }
 
+//void MainWindow::mostrar()
+//{
+//    if(GAME->ColMil_lim())
+//        ui->nivel1->hide();
+//}
+
 void MainWindow::on_nivel1_clicked()
 {
+    ui->titulo->hide();
     ui->nivel1->hide();
     GAME->nivel_1();
     ui->graphicsView->setScene(GAME->mundo1);
     GAME->Funlimites();
+//    if(GAME->ColMil_lim()){
+//        ui->nivel1->hide();
+//    }
+//    mostrar();
+
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *evento)
 {
     if(evento->key()==Qt::Key_W) //Arriba
     {
-        if (!GAME->ColAv_lim())
+        if (!GAME->ColAv_lim()){
             GAME->air->MovArriba();
+        }
         else
             GAME->air->MovAbajo();
     }
@@ -61,6 +78,12 @@ void MainWindow::keyPressEvent(QKeyEvent *evento)
         GAME->act_misil(posXAv,posYAv);
         timer->start(10);
     }
+    else if(evento->key()==Qt::Key_E)
+    {
+        posYAv=(GAME->air->getPosy());
+        GAME->act_bfuego(posYAv);
+        timer_Bfuego->start(10);
+    }
 }
 
 void MainWindow::Actualizar()
@@ -71,3 +94,20 @@ void MainWindow::Actualizar()
     GAME->misil1->setPos(GAME->misil1->getPosx(),GAME->misil1->getPosy());
 }
 
+void MainWindow::Act_MovFuego()
+{
+    GAME->BFuego->MovRectilineo();
+    GAME->BFuego->setPos(GAME->BFuego->getPosx(),GAME->BFuego->getPosy());
+}
+
+
+//bool MainWindow::evaluarColisionBullet2(Misil *misil)
+//{
+//    QList<Limites*>::iterator it;
+//    for(it=limite.begin();it!=misil.end();it++)
+//    {
+//        if(bala->collidesWithItem(*it))
+//        {
+//            return true;
+//        }
+//    }

@@ -20,6 +20,7 @@ public:
     void CalcularPosicion();
     void ActualizarVelocidad();
 
+
     double getPosx() const;
     double getPosy() const;
 };

@@ -27,14 +27,45 @@
    <widget class="QPushButton" name="nivel1">
     <property name="geometry">
      <rect>
-      <x>590</x>
-      <y>50</y>
-      <width>80</width>
-      <height>21</height>
+      <x>300</x>
+      <y>190</y>
+      <width>121</width>
+      <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Showcard Gothic</family>
+      <pointsize>18</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Nivel 1</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="titulo">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>40</y>
+      <width>361</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Showcard Gothic</family>
+      <pointsize>24</pointsize>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>OpenHandCursor</cursorShape>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string>WWT: THE MISSION</string>
     </property>
    </widget>
   </widget>

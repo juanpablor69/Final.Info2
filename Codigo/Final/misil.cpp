@@ -53,3 +53,5 @@ void Misil::ActualizarVelocidad()
     velocidad=sqrt(pow(velx,2)+pow(vely,2));
     angulo=atan2(vely,velx);
 }
+
+

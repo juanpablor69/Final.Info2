@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGraphicsView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
@@ -26,6 +27,7 @@ public:
     QWidget *centralwidget;
     QGraphicsView *graphicsView;
     QPushButton *nivel1;
+    QLabel *titulo;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -41,7 +43,20 @@ public:
         graphicsView->setGeometry(QRect(0, 0, 741, 421));
         nivel1 = new QPushButton(centralwidget);
         nivel1->setObjectName(QString::fromUtf8("nivel1"));
-        nivel1->setGeometry(QRect(590, 50, 80, 21));
+        nivel1->setGeometry(QRect(300, 190, 121, 41));
+        QFont font;
+        font.setFamily(QString::fromUtf8("Showcard Gothic"));
+        font.setPointSize(18);
+        nivel1->setFont(font);
+        titulo = new QLabel(centralwidget);
+        titulo->setObjectName(QString::fromUtf8("titulo"));
+        titulo->setGeometry(QRect(220, 40, 361, 71));
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("Showcard Gothic"));
+        font1.setPointSize(24);
+        titulo->setFont(font1);
+        titulo->setCursor(QCursor(Qt::OpenHandCursor));
+        titulo->setAutoFillBackground(false);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -60,6 +75,7 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
         nivel1->setText(QApplication::translate("MainWindow", "Nivel 1", nullptr));
+        titulo->setText(QApplication::translate("MainWindow", "WWT: THE MISSION", nullptr));
     } // retranslateUi
 
 };

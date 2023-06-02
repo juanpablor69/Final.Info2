@@ -21,6 +21,6 @@ QRectF Limites::boundingRect() const
 
 void Limites::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-    painter->setBrush(Qt::green);
+    painter->setBrush(Qt::black);
     painter->drawRect(boundingRect());
 }

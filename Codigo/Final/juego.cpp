@@ -15,16 +15,15 @@ void Juego::escena_Menu()
 
 void Juego::Funlimites()
 {
-    limite.push_back(new Limites(0,0,736,10));
+    limite.push_back(new Limites(0,0,736,5));
     mundo1->addItem(limite.back());
-    limite.push_back(new Limites(0,0,10,414));
+    limite.push_back(new Limites(0,0,5,414));
     mundo1->addItem(limite.back());
-    limite.push_back(new Limites(368,0,10,414));
+    limite.push_back(new Limites(368,0,5,414));
     mundo1->addItem(limite.back());
-    limite.push_back(new Limites(0,207,736,10));
+    limite.push_back(new Limites(0,207,736,5));
     mundo1->addItem(limite.back());
 }
-
 
 
 void Juego::nivel_1()
@@ -36,7 +35,6 @@ void Juego::nivel_1()
     air=new Avion(15,15,40);
     mundo1->addItem(air);
 
-
 }
 
 void Juego::act_misil(int x, int y) // ACTIVAR MISIL
@@ -45,7 +43,13 @@ void Juego::act_misil(int x, int y) // ACTIVAR MISIL
     mundo1->addItem(misil1);
 }
 
-bool Juego::ColAv_lim()
+void Juego::act_bfuego(int y)
+{
+    BFuego=new Bolafuego(200,y,15);
+    mundo1->addItem(BFuego);
+}
+
+bool Juego::ColAv_lim() //COLISION AVION CONTRA LIMITES DEL JUEGO
 {
     QList<Limites*>::Iterator it;
     for(it=limite.begin();it!=limite.end();it++)
@@ -56,14 +60,16 @@ bool Juego::ColAv_lim()
     return false;
 }
 
-bool Juego::ColMil_lim()
-{
-    QList<Limites*>::Iterator it;
-    if((*it)->collidesWithItem(misil1)){
-        return true;
-    }
-    else
-        return false;
-}
+//bool Juego::ColMil_lim()
+//{
+//    QList<Limites*>::Iterator it;
+//    if((*it)->collidesWithItem(misil1)){
+//        return true;
+//    }
+//    else
+//        return false;
+//}
+
+
 
 
