@@ -5,13 +5,12 @@ Bolafuego::Bolafuego()
 
 }
 
-Bolafuego::Bolafuego(double x,double y, double r)
+Bolafuego::Bolafuego(double x,double y, double r,int nivel)
 {
     this->posx=x;
     this->posy=y;
     this->radio=r;
-    this->angulo=0;
-    this->velocidad=30;
+    this->velocidad=(60*nivel)/2;
     setPos(posx,posy);
 }
 

@@ -15,7 +15,6 @@
 class Juego: public QObject, public QGraphicsPixmapItem
 {
 public:
-    int posXAv,posYAv;
     Juego();
     QGraphicsScene *menu, *mundo1;
     Avion *air;
@@ -24,11 +23,14 @@ public:
     QList<Limites*>limite;
 //    map < *misil1 , int >;
 
+    int posXAv,posYAv;
+    int nivel=0;
+
     void escena_Menu(); //Funcion para configurar el menu
     void Funlimites();
     void nivel_1();
     void act_misil(int,int);
-    void act_bfuego(int);
+    void act_bfuego(int,int);
     bool ColAv_lim(); //COLISION AVION CONTRA LIMITES DEL JUEGO
 
 //    bool ColMil_lim();

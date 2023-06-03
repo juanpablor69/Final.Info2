@@ -8,6 +8,8 @@
 #include <QTimer>
 #include <QList>
 #include <cstdlib>
+#include <thread>
+#include <chrono>
 
 #include "juego.h"
 #include "avion.h"
@@ -32,6 +34,7 @@ private slots:
     void on_nivel1_clicked();
     void Actualizar();
     void Act_MovFuego();
+    void crono();
 
 private:
     Ui::MainWindow *ui;
@@ -39,25 +42,22 @@ private:
     Juego *GAME;
     QTimer *timer;
     QTimer *timer_Bfuego;
+    QTimer *contador1;
+//    QList<Misil*>misiles;
 
     int posXAv,posYAv; // Posicion del avion
+    int seg=0,min=0;
+    int nivel=0;
 
-//    QList< CLASE *>::iterator it;
-//    for(it=NOMBRE LISTA.begin();it!=NOMBRE LISTA.end();it++)
-//    {
-//        if(bala->collidesWithItem(*it))
-//        {
-//            return true;
-//        }
-//    }
-
+    void keyPressEvent(QKeyEvent *evento);
     void vermenu();
     void vernivel1();
     void escena_Menu(); //Funcion para configurar el menu
     void nivel_1();
     void act_misil();
     void mostrar();
+//    bool Col_AvBFuego();
 
-    void keyPressEvent(QKeyEvent *evento);
+
 };
 #endif // MAINWINDOW_H

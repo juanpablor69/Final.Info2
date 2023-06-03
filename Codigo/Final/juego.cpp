@@ -43,9 +43,9 @@ void Juego::act_misil(int x, int y) // ACTIVAR MISIL
     mundo1->addItem(misil1);
 }
 
-void Juego::act_bfuego(int y)
+void Juego::act_bfuego(int y,int nivel)
 {
-    BFuego=new Bolafuego(200,y,15);
+    BFuego=new Bolafuego(240,y,15,nivel);
     mundo1->addItem(BFuego);
 }
 
