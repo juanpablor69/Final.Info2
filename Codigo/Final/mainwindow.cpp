@@ -8,18 +8,18 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     GAME=new Juego;
     vermenu(); //Inicializa el juego
-    timer= new QTimer();
+
+    timer= new QTimer(); //MISIL
     connect(timer,SIGNAL(timeout()),this,SLOT(Actualizar()));
-    timer_Bfuego= new QTimer();
-    connect(timer_Bfuego,SIGNAL(timeout()),this,SLOT(Act_MovFuego()));
-    contador1=new QTimer();
+
+    timer_Bfuego = new QTimer(this); //BOLAS DE FUEGO
+    connect(timer_Bfuego, SIGNAL(timeout()), GAME, SLOT(Act_MovFuego()));
+
+//    timer_Bfuego= new QTimer(); //BOLAS DE FUEGO
+//    connect(timer_Bfuego,SIGNAL(timeout()),this,SLOT(GAME.Act_MovFuego()));
+
+    contador1=new QTimer(); //CRONOMETRO
     connect(contador1,SIGNAL(timeout()),this,SLOT(crono()));
-
-}
-
-MainWindow::~MainWindow()
-{
-    delete ui;
 }
 
 void MainWindow::vermenu()
@@ -36,12 +36,6 @@ void MainWindow::escena_Menu()
     menu->setBackgroundBrush(QImage(":/images/menu2.jpg"));
 }
 
-//void MainWindow::mostrar()
-//{
-//    if(GAME->ColMil_lim())
-//        ui->nivel1->hide();
-//}
-
 void MainWindow::on_nivel1_clicked()
 {
     ui->titulo->hide();
@@ -53,11 +47,7 @@ void MainWindow::on_nivel1_clicked()
     ui->graphicsView->setScene(GAME->mundo1);
     GAME->Funlimites();
     crono();
-//    if(GAME->ColMil_lim()){
-//        ui->nivel1->hide();
-//    }
-//    mostrar();
-
+//    ColAvBFuegoMain();
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *evento)
@@ -86,18 +76,57 @@ void MainWindow::keyPressEvent(QKeyEvent *evento)
     }
 }
 
+void MainWindow::ColAvBFuegoMain()
+{
+//    if(GAME->ColAv_BolasF()){
+//        puntaje++;
+//        QString puntaje1 = QString("Puntaje: %1").arg(puntaje);
+//        ui->cronometro->setText(puntaje1);
+    //    }
+}
+
+void MainWindow::DetColi()
+{
+
+}
+
+void MainWindow::ActBola(int y,int nivel)
+{
+//    Bolafuego bolafuego(240, y, 15, nivel);
+//    bolasf.push_back(bolafuego);
+//    mundo1->addItem(&bolasf.back());
+
+//    bolasf.push_back(new Bolafuego(240,y,15,nivel); //Falla con append y push_back
+//    mundo1->addItem(bolasf.back());
+
+//    bolasf.back()->MovRectilineo();
+//    bolasf.back()->setPos(bolasf.back()->getPosx(),bolasf.back()->getPosy());
+
+    BFuego=new Bolafuego(240,y,15,nivel);
+    mundo1->addItem(BFuego);
+}
+
+void MainWindow::Act_MovFuego()
+{
+    GAME->bolasf.back()->MovRectilineo();
+    GAME->bolasf.back()->setPos(bolasf.back()->getPosx(),bolasf.back()->getPosy());
+
+//    bolasf.MovRectilineo();
+//    GAME->BFuego->setPos(GAME->BFuego->getPosx(),GAME->BFuego->getPosy());
+
+//    if(GAME->ColAv_BolasF()){
+//        puntaje++;
+//        QString puntaje1 = QString("Puntaje: %1").arg(puntaje);
+//        ui->cronometro->setText(puntaje1);
+//    }
+}
+
 void MainWindow::Actualizar()
 {
     GAME->misil1->CalcularVelocidad();
     GAME->misil1->CalcularPosicion();
     GAME->misil1->ActualizarVelocidad();
     GAME->misil1->setPos(GAME->misil1->getPosx(),GAME->misil1->getPosy());
-}
-
-void MainWindow::Act_MovFuego()
-{
-    GAME->BFuego->MovRectilineo();
-    GAME->BFuego->setPos(GAME->BFuego->getPosx(),GAME->BFuego->getPosy());
 }
 
 void MainWindow::crono()
@@ -107,7 +136,7 @@ void MainWindow::crono()
         min++;
         seg=0;
     }
-    if (seg%7==0){
+    if (seg%2==0){
         posYAv=5+(GAME->air->getPosy());
         GAME->act_bfuego(posYAv,nivel);
         timer_Bfuego->start(10);
@@ -117,13 +146,8 @@ void MainWindow::crono()
     ui->cronometro->setText(texto);
 }
 
-//bool MainWindow::evaluarColisionBullet2(Misil *misil)
-//{
-//    QList<Limites*>::iterator it;
-//    for(it=limite.begin();it!=misil.end();it++)
-//    {
-//        if(bala->collidesWithItem(*it))
-//        {
-//            return true;
-//        }
-//    }
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
+

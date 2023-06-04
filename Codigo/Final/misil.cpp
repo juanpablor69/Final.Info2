@@ -1,15 +1,5 @@
 #include "misil.h"
 
-double Misil::getPosx() const
-{
-    return posx;
-}
-
-double Misil::getPosy() const
-{
-    return posy;
-}
-
 Misil::Misil()
 {
 
@@ -23,6 +13,16 @@ Misil::Misil(double x, double y, double r)
     this->angulo=0;
     this->velocidad=30;
     setPos(posx,posy);
+}
+
+double Misil::getPosx() const
+{
+    return posx;
+}
+
+double Misil::getPosy() const
+{
+    return posy;
 }
 
 QRectF Misil::boundingRect() const

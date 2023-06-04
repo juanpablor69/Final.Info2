@@ -572,7 +572,7 @@
      <bool>false</bool>
     </property>
     <property name="text">
-     <string>0:00</string>
+     <string>Puntaje: </string>
     </property>
    </widget>
    <widget class="QPushButton" name="nivel2">
@@ -595,6 +595,25 @@
     </property>
     <property name="text">
      <string>Nivel 2</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="puntaje">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>380</y>
+      <width>101</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Showcard Gothic</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Puntaje: </string>
     </property>
    </widget>
   </widget>

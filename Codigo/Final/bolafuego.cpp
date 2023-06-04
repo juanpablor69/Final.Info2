@@ -10,7 +10,7 @@ Bolafuego::Bolafuego(double x,double y, double r,int nivel)
     this->posx=x;
     this->posy=y;
     this->radio=r;
-    this->velocidad=(60*nivel)/2;
+    this->velocidad=(90*nivel)/2;
     setPos(posx,posy);
 }
 

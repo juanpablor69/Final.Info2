@@ -261,6 +261,9 @@ release/moc_mainwindow.cpp: ../Final/mainwindow.h \
 		../Final/juego.h \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QGraphicsPixmapItem \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qgraphicsitem.h \
+		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/QCoreApplication \
+		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qcoreapplication.h \
+		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qeventloop.h \
 		../Final/avion.h \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QGraphicsItem \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/QPainter \
@@ -601,6 +604,9 @@ release/juego.o: ../Final/juego.cpp ../Final/juego.h \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qvector2d.h \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qtouchdevice.h \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/QList \
+		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/QCoreApplication \
+		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qcoreapplication.h \
+		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qeventloop.h \
 		../Final/avion.h \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QGraphicsItem \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/QPainter \
@@ -832,6 +838,9 @@ release/main.o: ../Final/main.cpp ../Final/mainwindow.h \
 		../Final/juego.h \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QGraphicsPixmapItem \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qgraphicsitem.h \
+		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/QCoreApplication \
+		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qcoreapplication.h \
+		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qeventloop.h \
 		../Final/avion.h \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QGraphicsItem \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/QPainter \
@@ -843,8 +852,6 @@ release/main.o: ../Final/main.cpp ../Final/mainwindow.h \
 		../Final/bolafuego.h \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QApplication \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qapplication.h \
-		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qcoreapplication.h \
-		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qeventloop.h \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qdesktopwidget.h \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qguiapplication.h \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qinputmethod.h
@@ -969,6 +976,9 @@ release/mainwindow.o: ../Final/mainwindow.cpp ../Final/mainwindow.h \
 		../Final/juego.h \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QGraphicsPixmapItem \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qgraphicsitem.h \
+		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/QCoreApplication \
+		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qcoreapplication.h \
+		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qeventloop.h \
 		../Final/avion.h \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QGraphicsItem \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/QPainter \
@@ -982,8 +992,6 @@ release/mainwindow.o: ../Final/mainwindow.cpp ../Final/mainwindow.h \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/QVariant \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QApplication \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qapplication.h \
-		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qcoreapplication.h \
-		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qeventloop.h \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qdesktopwidget.h \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qguiapplication.h \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qinputmethod.h \

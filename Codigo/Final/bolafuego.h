@@ -8,7 +8,7 @@
 
 #define tiempo 0.01
 
-class Bolafuego: public QGraphicsItem
+class Bolafuego:public QGraphicsItem
 {
     double posx, posy, radio,velx,nivel,velocidad;
 public:

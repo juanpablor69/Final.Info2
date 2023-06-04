@@ -25,7 +25,6 @@ void Juego::Funlimites()
     mundo1->addItem(limite.back());
 }
 
-
 void Juego::nivel_1()
 {
     mundo1 = new QGraphicsScene;
@@ -34,7 +33,7 @@ void Juego::nivel_1()
 
     air=new Avion(15,15,40);
     mundo1->addItem(air);
-
+//    manejoColisione();
 }
 
 void Juego::act_misil(int x, int y) // ACTIVAR MISIL
@@ -45,11 +44,24 @@ void Juego::act_misil(int x, int y) // ACTIVAR MISIL
 
 void Juego::act_bfuego(int y,int nivel)
 {
-    BFuego=new Bolafuego(240,y,15,nivel);
-    mundo1->addItem(BFuego);
+//    Bolafuego bolafuego(240, y, 15, nivel);
+//    bolasf.push_back(bolafuego);
+//    mundo1->addItem(&bolasf.back());
+
+    bolasf.push_back(new Bolafuego(240,y,15,nivel)); //Falla con append y push_back
+    mundo1->addItem(bolasf.back());
+
+//    BFuego=new Bolafuego(240,y,15,nivel);
+    //    mundo1->addItem(BFuego);
 }
 
-bool Juego::ColAv_lim() //COLISION AVION CONTRA LIMITES DEL JUEGO
+void Juego::Act_MovFuego()
+{
+    bolasf.back()->MovRectilineo();
+    bolasf.back()->setPos(bolasf.back()->getPosx(),bolasf.back()->getPosy());
+}
+
+bool Juego::ColAv_lim() //COLISION AVION CONTRA LIMITES DEL JUEGO - 342
 {
     QList<Limites*>::Iterator it;
     for(it=limite.begin();it!=limite.end();it++)
@@ -60,15 +72,39 @@ bool Juego::ColAv_lim() //COLISION AVION CONTRA LIMITES DEL JUEGO
     return false;
 }
 
-//bool Juego::ColMil_lim()
+//bool Juego::ColAv_BolasF()
 //{
-//    QList<Limites*>::Iterator it;
-//    if((*it)->collidesWithItem(misil1)){
-//        return true;
+//    QList<Bolafuego*>::iterator it;  // Cambio de QList<Bolafuego*>::iterator a QList<Bolafuego>::iterator
+//    for (it = bolasf.begin(); it != bolasf.end(); it++) {
+//        if (air->collidesWithItem((*it))) {
+//            return true;
+//        }
 //    }
-//    else
-//        return false;
+//    QList<Bolafuego*>::iterator it;
+//    for (it = bolasf.begin(); it != bolasf.end(); it++) {
+//        if(air->collidesWithItem(*it)){
+//            return true;
+//        }
+//    }
+//    return false;
 //}
+
+//void Juego::manejoColisione()
+//{
+//    if(!bolasf.empty()){
+//        int contador=0;
+//        QList<Bolafuego*>::iterator it;
+//        for (it = bolasf.begin(); it != bolasf.end(); it++) {
+//            if(ColAv_BolasF()){
+//                mundo1->removeItem(bolasf.at(contador));
+//                bolasf.removeAt(contador);
+//                break;
+//            }
+//            contador++;
+//        }
+//    }
+//}
+
 
 
 

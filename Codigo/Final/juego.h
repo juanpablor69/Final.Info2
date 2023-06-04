@@ -6,6 +6,7 @@
 #include <QKeyEvent>
 #include <QList>
 #include <map>
+#include <QCoreApplication>
 
 #include <avion.h>
 #include <misil.h>
@@ -21,18 +22,21 @@ public:
     Misil *misil1;
     Bolafuego *BFuego;
     QList<Limites*>limite;
-//    map < *misil1 , int >;
+    QList<Bolafuego*>bolasf;
+//    map<*misil1,int>;
 
     int posXAv,posYAv;
-    int nivel=0;
+    int nivel=0,puntaje=0;
 
     void escena_Menu(); //Funcion para configurar el menu
     void Funlimites();
     void nivel_1();
     void act_misil(int,int);
     void act_bfuego(int,int);
+    void Act_MovFuego();
     bool ColAv_lim(); //COLISION AVION CONTRA LIMITES DEL JUEGO
-
+    bool ColAv_BolasF();
+    void manejoColisione();
 //    bool ColMil_lim();
 //    void mostrar();
 };
