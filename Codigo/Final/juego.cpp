@@ -42,24 +42,28 @@ void Juego::act_misil(int x, int y) // ACTIVAR MISIL
     mundo1->addItem(misil1);
 }
 
-void Juego::act_bfuego(int y,int nivel)
+void Juego::act_bfuego(int y,int nivel,int nbolas)
 {
-//    Bolafuego bolafuego(240, y, 15, nivel);
-//    bolasf.push_back(bolafuego);
-//    mundo1->addItem(&bolasf.back());
+    BFuego = new Bolafuego(240, y, 15, nivel,nbolas);
+    bolasf.insert(nbolas, BFuego);
+    mundo1->addItem(BFuego);
 
-    bolasf.push_back(new Bolafuego(240,y,15,nivel)); //Falla con append y push_back
-    mundo1->addItem(bolasf.back());
+//    BFuego=new Bolafuego(240, y, 15, nivel);
+//    bolasf.push_back(BFuego);
+//    mundo1->addItem(bolasf.back());
+
+//    bolasf.push_back(new Bolafuego(240,y,15,nivel)); //Falla con append y push_back
+//    mundo1->addItem(bolasf.back());
 
 //    BFuego=new Bolafuego(240,y,15,nivel);
-    //    mundo1->addItem(BFuego);
+//    mundo1->addItem(BFuego);
 }
 
-void Juego::Act_MovFuego()
-{
-    bolasf.back()->MovRectilineo();
-    bolasf.back()->setPos(bolasf.back()->getPosx(),bolasf.back()->getPosy());
-}
+//void Juego::Act_MovFuego() NO CONECTO DESDE JUEGO A MAINWINDOW
+//{
+//    bolasf.back()->MovRectilineo();
+//    bolasf.back()->setPos(bolasf.back()->getPosx(),bolasf.back()->getPosy());
+//}
 
 bool Juego::ColAv_lim() //COLISION AVION CONTRA LIMITES DEL JUEGO - 342
 {

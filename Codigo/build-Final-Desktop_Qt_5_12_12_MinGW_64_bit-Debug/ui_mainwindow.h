@@ -31,6 +31,7 @@ public:
     QLabel *cronometro;
     QPushButton *nivel2;
     QLabel *puntaje;
+    QLabel *lista;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -154,6 +155,10 @@ public:
         puntaje->setObjectName(QString::fromUtf8("puntaje"));
         puntaje->setGeometry(QRect(570, 380, 101, 21));
         puntaje->setFont(font2);
+        lista = new QLabel(centralwidget);
+        lista->setObjectName(QString::fromUtf8("lista"));
+        lista->setGeometry(QRect(460, 380, 101, 21));
+        lista->setFont(font2);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -176,6 +181,7 @@ public:
         cronometro->setText(QApplication::translate("MainWindow", "Puntaje: ", nullptr));
         nivel2->setText(QApplication::translate("MainWindow", "Nivel 2", nullptr));
         puntaje->setText(QApplication::translate("MainWindow", "Puntaje: ", nullptr));
+        lista->setText(QString());
     } // retranslateUi
 
 };

@@ -47,11 +47,12 @@ private:
     QTimer *contador1;
     QTimer *DecColi;
 
-    QList<Bolafuego*>bolasf;
+//    QList<Bolafuego*>bolasf;
 
     int posXAv,posYAv; // Posicion del avion
     int seg=0,min=0;
-    int nivel=0,puntaje=0;
+    int nivel=0,puntaje=0, conlista=0;
+    int nbfuego=0;
 
     void keyPressEvent(QKeyEvent *evento);
     void vermenu();

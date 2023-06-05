@@ -12,11 +12,11 @@ MainWindow::MainWindow(QWidget *parent)
     timer= new QTimer(); //MISIL
     connect(timer,SIGNAL(timeout()),this,SLOT(Actualizar()));
 
-    timer_Bfuego = new QTimer(this); //BOLAS DE FUEGO
-    connect(timer_Bfuego, SIGNAL(timeout()), GAME, SLOT(Act_MovFuego()));
+//    timer_Bfuego = new QTimer(GAME); //BOLAS DE FUEGO
+//    connect(timer_Bfuego, SIGNAL(timeout()), GAME, SLOT(Act_MovFuego()));
 
-//    timer_Bfuego= new QTimer(); //BOLAS DE FUEGO
-//    connect(timer_Bfuego,SIGNAL(timeout()),this,SLOT(GAME.Act_MovFuego()));
+    timer_Bfuego= new QTimer(); //BOLAS DE FUEGO
+    connect(timer_Bfuego,SIGNAL(timeout()),this,SLOT(Act_MovFuego()));
 
     contador1=new QTimer(); //CRONOMETRO
     connect(contador1,SIGNAL(timeout()),this,SLOT(crono()));
@@ -82,7 +82,7 @@ void MainWindow::ColAvBFuegoMain()
 //        puntaje++;
 //        QString puntaje1 = QString("Puntaje: %1").arg(puntaje);
 //        ui->cronometro->setText(puntaje1);
-    //    }
+//    }
 }
 
 void MainWindow::DetColi()
@@ -90,8 +90,8 @@ void MainWindow::DetColi()
 
 }
 
-void MainWindow::ActBola(int y,int nivel)
-{
+//void MainWindow::ActBola(int y,int nivel)
+//{
 //    Bolafuego bolafuego(240, y, 15, nivel);
 //    bolasf.push_back(bolafuego);
 //    mundo1->addItem(&bolasf.back());
@@ -102,14 +102,39 @@ void MainWindow::ActBola(int y,int nivel)
 //    bolasf.back()->MovRectilineo();
 //    bolasf.back()->setPos(bolasf.back()->getPosx(),bolasf.back()->getPosy());
 
-    BFuego=new Bolafuego(240,y,15,nivel);
-    mundo1->addItem(BFuego);
-}
+//    BFuego=new Bolafuego(240,y,15,nivel);
+//    mundo1->addItem(BFuego);
+//}
 
 void MainWindow::Act_MovFuego()
 {
-    GAME->bolasf.back()->MovRectilineo();
-    GAME->bolasf.back()->setPos(bolasf.back()->getPosx(),bolasf.back()->getPosy());
+    if (!GAME->bolasf.isEmpty()) { // SI LISTA NO ESTA VACIA
+        // Obtener el iterador al último elemento del mapa
+        auto lastIterator = --GAME->bolasf.end();
+
+        // Acceder al puntero al último objeto Bolafuego
+        Bolafuego* bolafuego = lastIterator.value();
+
+        // Realizar las operaciones necesarias
+        bolafuego->MovRectilineo();
+        bolafuego->setPos(bolafuego->getPosx(), bolafuego->getPosy());
+    }else{ //AUMENTA SI HAY ERROR EN LISTA
+        conlista++;
+        QString listaS = QString("%1").arg(conlista);
+        ui->lista->setText(listaS);
+    }
+
+//    GAME->bolasf.back()->MovRectilineo();
+//    GAME->bolasf.back()->setPos(bolasf.back()->getPosx(),bolasf.back()->getPosy());
+
+//    if (GAME->bolasf.isEmpty()) {
+//        GAME->bolasf.back()->MovRectilineo();
+//        GAME->bolasf.back()->setPos(GAME->bolasf.back()->getPosx(), GAME->bolasf.back()->getPosy());
+//    }else{
+//       conlista++;
+//       QString listaS = QString("%1").arg(conlista);
+//       ui->lista->setText(listaS);
+//    }
 
 //    bolasf.MovRectilineo();
 //    GAME->BFuego->setPos(GAME->BFuego->getPosx(),GAME->BFuego->getPosy());
@@ -136,9 +161,10 @@ void MainWindow::crono()
         min++;
         seg=0;
     }
-    if (seg%2==0){
+    if (seg%5==0){
+        nbfuego++;
         posYAv=5+(GAME->air->getPosy());
-        GAME->act_bfuego(posYAv,nivel);
+        GAME->act_bfuego(posYAv,nivel,nbfuego);
         timer_Bfuego->start(10);
     }
     contador1->start(1000);

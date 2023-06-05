@@ -7,6 +7,7 @@
 #include <QList>
 #include <map>
 #include <QCoreApplication>
+#include <QMap>
 
 #include <avion.h>
 #include <misil.h>
@@ -22,8 +23,9 @@ public:
     Misil *misil1;
     Bolafuego *BFuego;
     QList<Limites*>limite;
-    QList<Bolafuego*>bolasf;
+//    QList<Bolafuego*>bolasf;
 //    map<*misil1,int>;
+    QMap<int, Bolafuego*> bolasf;
 
     int posXAv,posYAv;
     int nivel=0,puntaje=0;
@@ -32,13 +34,17 @@ public:
     void Funlimites();
     void nivel_1();
     void act_misil(int,int);
-    void act_bfuego(int,int);
-    void Act_MovFuego();
+    void act_bfuego(int,int,int);
+//    void Act_MovFuego();
     bool ColAv_lim(); //COLISION AVION CONTRA LIMITES DEL JUEGO
     bool ColAv_BolasF();
     void manejoColisione();
 //    bool ColMil_lim();
 //    void mostrar();
+
+public slots:
+    void Act_MovFuego();
+
 };
 
 #endif // JUEGO_H

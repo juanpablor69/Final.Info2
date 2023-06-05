@@ -10,10 +10,10 @@
 
 class Bolafuego:public QGraphicsItem
 {
-    double posx, posy, radio,velx,nivel,velocidad;
+    double posx, posy, radio,velx,nivel,velocidad,nbolas;
 public:
     Bolafuego();
-    Bolafuego(double x,double y, double r,int nivel);
+    Bolafuego(double x,double y, double r,int nivel,int n);
     QRectF boundingRect() const ;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,QWidget *widget = nullptr);
     void MovRectilineo();
