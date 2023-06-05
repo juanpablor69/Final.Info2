@@ -37,7 +37,7 @@ public:
     void act_bfuego(int,int,int);
 //    void Act_MovFuego();
     bool ColAv_lim(); //COLISION AVION CONTRA LIMITES DEL JUEGO
-    bool ColAv_BolasF();
+    bool ColAv_BolasF(int);
     void manejoColisione();
 //    bool ColMil_lim();
 //    void mostrar();

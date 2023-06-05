@@ -76,35 +76,10 @@ void MainWindow::keyPressEvent(QKeyEvent *evento)
     }
 }
 
-void MainWindow::ColAvBFuegoMain()
-{
-//    if(GAME->ColAv_BolasF()){
-//        puntaje++;
-//        QString puntaje1 = QString("Puntaje: %1").arg(puntaje);
-//        ui->cronometro->setText(puntaje1);
-//    }
-}
-
 void MainWindow::DetColi()
 {
 
 }
-
-//void MainWindow::ActBola(int y,int nivel)
-//{
-//    Bolafuego bolafuego(240, y, 15, nivel);
-//    bolasf.push_back(bolafuego);
-//    mundo1->addItem(&bolasf.back());
-
-//    bolasf.push_back(new Bolafuego(240,y,15,nivel); //Falla con append y push_back
-//    mundo1->addItem(bolasf.back());
-
-//    bolasf.back()->MovRectilineo();
-//    bolasf.back()->setPos(bolasf.back()->getPosx(),bolasf.back()->getPosy());
-
-//    BFuego=new Bolafuego(240,y,15,nivel);
-//    mundo1->addItem(BFuego);
-//}
 
 void MainWindow::Act_MovFuego()
 {
@@ -118,9 +93,14 @@ void MainWindow::Act_MovFuego()
         // Realizar las operaciones necesarias
         bolafuego->MovRectilineo();
         bolafuego->setPos(bolafuego->getPosx(), bolafuego->getPosy());
+        if(!GAME->ColAv_BolasF(nbfuego)){
+            coli++;
+            QString col = QString("No coli %1").arg(coli);
+            ui->label_col->setText(col);
+        }
     }else{ //AUMENTA SI HAY ERROR EN LISTA
         conlista++;
-        QString listaS = QString("%1").arg(conlista);
+        QString listaS = QString("LVacia %1").arg(conlista);
         ui->lista->setText(listaS);
     }
 
@@ -177,3 +157,27 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+//void MainWindow::ActBola(int y,int nivel)
+//{
+//    Bolafuego bolafuego(240, y, 15, nivel);
+//    bolasf.push_back(bolafuego);
+//    mundo1->addItem(&bolasf.back());
+
+//    bolasf.push_back(new Bolafuego(240,y,15,nivel); //Falla con append y push_back
+//    mundo1->addItem(bolasf.back());
+
+//    bolasf.back()->MovRectilineo();
+//    bolasf.back()->setPos(bolasf.back()->getPosx(),bolasf.back()->getPosy());
+
+//    BFuego=new Bolafuego(240,y,15,nivel);
+//    mundo1->addItem(BFuego);
+//}
+
+//void MainWindow::ColAvBFuegoMain()
+//{
+//    if(GAME->ColAv_BolasF()){
+//        puntaje++;
+//        QString puntaje1 = QString("Puntaje: %1").arg(puntaje);
+//        ui->cronometro->setText(puntaje1);
+//    }
+//}

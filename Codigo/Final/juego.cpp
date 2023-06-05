@@ -33,6 +33,7 @@ void Juego::nivel_1()
 
     air=new Avion(15,15,40);
     mundo1->addItem(air);
+
 //    manejoColisione();
 }
 
@@ -59,12 +60,6 @@ void Juego::act_bfuego(int y,int nivel,int nbolas)
 //    mundo1->addItem(BFuego);
 }
 
-//void Juego::Act_MovFuego() NO CONECTO DESDE JUEGO A MAINWINDOW
-//{
-//    bolasf.back()->MovRectilineo();
-//    bolasf.back()->setPos(bolasf.back()->getPosx(),bolasf.back()->getPosy());
-//}
-
 bool Juego::ColAv_lim() //COLISION AVION CONTRA LIMITES DEL JUEGO - 342
 {
     QList<Limites*>::Iterator it;
@@ -76,8 +71,22 @@ bool Juego::ColAv_lim() //COLISION AVION CONTRA LIMITES DEL JUEGO - 342
     return false;
 }
 
-//bool Juego::ColAv_BolasF()
+//void Juego::Act_MovFuego() NO CONECTO DESDE JUEGO A MAINWINDOW
 //{
+//    bolasf.back()->MovRectilineo();
+//    bolasf.back()->setPos(bolasf.back()->getPosx(),bolasf.back()->getPosy());
+//}
+
+bool Juego::ColAv_BolasF(int nbolas)
+{
+    if (bolasf.value(nbolas)->collidesWithItem(air)){
+        mundo1->removeItem(bolasf.value(nbolas));
+        bolasf.remove(nbolas);
+        return true;
+//        delete bolasf[nbolas];
+    }
+    return false;
+
 //    QList<Bolafuego*>::iterator it;  // Cambio de QList<Bolafuego*>::iterator a QList<Bolafuego>::iterator
 //    for (it = bolasf.begin(); it != bolasf.end(); it++) {
 //        if (air->collidesWithItem((*it))) {
@@ -91,7 +100,7 @@ bool Juego::ColAv_lim() //COLISION AVION CONTRA LIMITES DEL JUEGO - 342
 //        }
 //    }
 //    return false;
-//}
+}
 
 //void Juego::manejoColisione()
 //{
