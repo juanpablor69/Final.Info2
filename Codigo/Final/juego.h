@@ -13,6 +13,7 @@
 #include <misil.h>
 #include <limites.h>
 #include <bolafuego.h>
+#include <bala.h>
 
 class Juego: public QObject, public QGraphicsPixmapItem
 {
@@ -22,8 +23,10 @@ public:
     Avion *air;
     Misil *misil1;
     Bolafuego *BFuego;
+    Bala *balas;
     QList<Limites*>limite;
     QMap<int, Bolafuego*> bolasf;
+    QMap<int, Bala*> balasmap;
 //    QList<Bolafuego*>bolasf;
 //    map<*misil1,int>;
 
@@ -36,10 +39,11 @@ public:
     void nivel_2();
     void act_misil(int,int);
     void act_bfuego(int,int,int);
+    void act_bala(int y,int nbalas,int nivel);
     bool ColAv_lim(); //COLISION AVION CONTRA LIMITES DEL JUEGO
-//    bool ColAv_BolasF(int,int nivel);
     bool ColAv_BolasF(int);
     void manejoColisione();
+//    bool ColAv_BolasF(int,int nivel);
 //    void Act_MovFuego();
 //    bool ColMil_lim();
 //    void mostrar();

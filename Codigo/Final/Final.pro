@@ -10,6 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     avion.cpp \
+    bala.cpp \
     bolafuego.cpp \
     juego.cpp \
     limites.cpp \
@@ -19,6 +20,7 @@ SOURCES += \
 
 HEADERS += \
     avion.h \
+    bala.h \
     bolafuego.h \
     juego.h \
     limites.h \

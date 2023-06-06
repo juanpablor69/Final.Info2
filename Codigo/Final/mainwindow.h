@@ -17,6 +17,7 @@
 #include "misil.h"
 #include "limites.h"
 #include "bolafuego.h"
+#include "bala.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -35,29 +36,31 @@ private slots:
     void on_nivel1_clicked();
     void Actualizar();
     void Act_MovFuego();
+    void Act_MovBala();
     void crono();
 
     void on_perdiste_clicked();
 
     void on_nivel2_clicked();
 
+    void on_ganaste_clicked();
+
 private:
     Ui::MainWindow *ui;
-    QGraphicsScene *menu, *mundo1;
+//    QGraphicsScene *menu, *mundo1;
     Juego *GAME;
     Bolafuego *BFuego;
 
     QTimer *timer;
     QTimer *timer_Bfuego;
     QTimer *contador1;
-    QTimer *DecColi;
-
+    QTimer *tbalas;
 //    QList<Bolafuego*>bolasf;
 
     int posXAv,posYAv; // Posicion del avion
     int seg=0,min=0;
     int nivel=0,puntaje=0,conlista=0;
-    int nbfuego=0, coli=0;
+    int nbfuego=0,nbalas=0, coli=0;
 
     void keyPressEvent(QKeyEvent *evento);
     void vermenu();

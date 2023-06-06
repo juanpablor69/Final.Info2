@@ -67,7 +67,7 @@ void Juego::act_bfuego(int y,int nivel,int nbolas)
         bolasf.insert(nbolas, BFuego);
         mundo2->addItem(BFuego);
     }
-
+{
 //    BFuego=new Bolafuego(240, y, 15, nivel);
 //    bolasf.push_back(BFuego);
 //    mundo1->addItem(bolasf.back());
@@ -77,7 +77,16 @@ void Juego::act_bfuego(int y,int nivel,int nbolas)
 
 //    BFuego=new Bolafuego(240,y,15,nivel);
 //    mundo1->addItem(BFuego);
+    }
 }
+
+void Juego::act_bala(int y,int nbalas,int nivel)
+{
+    balas=new Bala(240,y,40,15,nivel);
+    balasmap.insert(nbalas, balas);
+    mundo1->addItem(balas);
+}
+
 
 bool Juego::ColAv_lim() //COLISION AVION CONTRA LIMITES DEL JUEGO - 342
 {

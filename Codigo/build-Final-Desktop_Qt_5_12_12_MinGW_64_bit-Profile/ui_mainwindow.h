@@ -35,6 +35,7 @@ public:
     QLabel *lista;
     QLabel *label_col;
     QToolButton *perdiste;
+    QToolButton *ganaste;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -178,6 +179,10 @@ public:
         font3.setFamily(QString::fromUtf8("Showcard Gothic"));
         font3.setPointSize(10);
         perdiste->setFont(font3);
+        ganaste = new QToolButton(centralwidget);
+        ganaste->setObjectName(QString::fromUtf8("ganaste"));
+        ganaste->setGeometry(QRect(250, 150, 231, 61));
+        ganaste->setFont(font3);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -203,6 +208,7 @@ public:
         lista->setText(QApplication::translate("MainWindow", "lista", nullptr));
         label_col->setText(QApplication::translate("MainWindow", "coll", nullptr));
         perdiste->setText(QApplication::translate("MainWindow", "PERDISTE. VOLVER AL MEN\303\232", nullptr));
+        ganaste->setText(QApplication::translate("MainWindow", "ganaste. continua en dificil", nullptr));
     } // retranslateUi
 
 };

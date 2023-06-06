@@ -1,7 +1,6 @@
 <RCC>
     <qresource prefix="/images">
         <file>menu2.jpg</file>
-        <file>aves.png</file>
         <file>bala(2).png</file>
         <file>fuego.png</file>
         <file>menu.jpg</file>

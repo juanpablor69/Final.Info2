@@ -1,0 +1,10 @@
+release/avion.o
+release/bala.o
+release/bolafuego.o
+release/juego.o
+release/limites.o
+release/main.o
+release/mainwindow.o
+release/misil.o
+release/qrc_imagenes.o
+release/moc_mainwindow.o

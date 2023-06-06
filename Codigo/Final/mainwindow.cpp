@@ -20,6 +20,10 @@ MainWindow::MainWindow(QWidget *parent)
 
     contador1=new QTimer(); //CRONOMETRO
     connect(contador1,SIGNAL(timeout()),this,SLOT(crono()));
+
+    tbalas=new QTimer();
+    connect(timer_Bfuego,SIGNAL(timeout()),this,SLOT(Act_MovBala()));
+
 }
 
 void MainWindow::vermenu()
@@ -32,13 +36,14 @@ void MainWindow::vermenu()
     ui->nivel2->show();
     ui->puntaje->hide();
     ui->label_col->hide();
+    ui->ganaste->hide();
 }
 
 void MainWindow::escena_Menu()
 {
-    menu = new QGraphicsScene ;
-    menu->setSceneRect(0,0,736,414);
-    menu->setBackgroundBrush(QImage(":/images/menu2.jpg"));
+    GAME->menu = new QGraphicsScene ;
+    GAME->menu->setSceneRect(0,0,736,414);
+    GAME->menu->setBackgroundBrush(QImage(":/images/menu2.jpg"));
 }
 
 void MainWindow::on_nivel1_clicked()
@@ -105,6 +110,103 @@ void MainWindow::keyPressEvent(QKeyEvent *evento)
     }
 }
 
+void MainWindow::Actualizar()
+{
+    GAME->misil1->CalcularVelocidad();
+    GAME->misil1->CalcularPosicion();
+    GAME->misil1->ActualizarVelocidad();
+    GAME->misil1->setPos(GAME->misil1->getPosx(),GAME->misil1->getPosy());
+}
+
+void MainWindow::crono()
+{
+    seg++;
+    if (seg<60){
+        contador1->start(1000);
+    }
+//    if (seg==20){
+//        seg=0;
+//        ui->ganaste->show();
+//        timer_Bfuego->stop();
+//        contador1->stop();
+////        GAME->air->hide();
+//        if(nivel==1){
+//            GAME->mundo1->removeItem(GAME->air);
+//            delete GAME->air;
+//            GAME->mundo1->removeItem(GAME->bolasf.value(nbfuego));
+//            GAME->bolasf.remove(nbfuego);
+//        }
+//    }
+    if (seg%7==0){ //BOLA
+        nbfuego++;
+        posYAv=(GAME->air->getPosy());
+        GAME->act_bfuego(posYAv,nivel,nbfuego);
+        timer_Bfuego->start(10);
+    }
+    if (seg%5==0){ //BALA
+        nbalas++;
+        posYAv=(GAME->air->getPosy());
+        GAME->act_bala(posYAv,nbalas,nivel);
+        tbalas->start(10);
+    }
+//    contador1->start(1000);
+    QString texto = QString("%1:%2").arg(min).arg(seg);
+    ui->cronometro->setText(texto);
+    Actpuntaje(seg);
+}
+
+void MainWindow::Actpuntaje(int seg)
+{
+    if(seg>0){
+        puntaje=puntaje+(((seg+2)/2)/4);
+        QString puntajeS = QString("Puntaje: %1").arg(puntaje);
+        ui->puntaje->setText(puntajeS);
+    }
+    if(puntaje<0){
+        seg=0;
+        puntaje=0;
+        ui->perdiste->show();
+        timer_Bfuego->stop();
+        contador1->stop();
+//        GAME->air->hide();
+//        if(nivel==1){
+            GAME->mundo1->removeItem(GAME->air);
+            delete GAME->air;
+//        }
+    }
+}
+
+void MainWindow::on_perdiste_clicked()
+{
+    seg=0;
+    vermenu();
+}
+
+void MainWindow::on_ganaste_clicked()
+{
+    on_nivel2_clicked();
+}
+
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
+
+void MainWindow::Act_MovBala()
+{
+    if (!GAME->balasmap.isEmpty()) { // SI MAPA NO ESTA VACIA
+        // Obtener el iterador al último elemento del mapa
+        auto lastIterator = --GAME->balasmap.end();
+
+        // Acceder al puntero al último objeto Bolafuego
+        Bala* bala = lastIterator.value();
+
+        // Realizar las operaciones necesarias
+        bala->MovRectilineo();
+        bala->setPos(bala->getPosx(), bala->getPosy());
+    }
+}
+
 void MainWindow::Act_MovFuego()
 {
     if (!GAME->bolasf.isEmpty()) { // SI LISTA NO ESTA VACIA
@@ -149,65 +251,7 @@ void MainWindow::Act_MovFuego()
 //        puntaje++;
 //        QString puntaje1 = QString("Puntaje: %1").arg(puntaje);
 //        ui->cronometro->setText(puntaje1);
-//    }
-}
-
-void MainWindow::Actualizar()
-{
-    GAME->misil1->CalcularVelocidad();
-    GAME->misil1->CalcularPosicion();
-    GAME->misil1->ActualizarVelocidad();
-    GAME->misil1->setPos(GAME->misil1->getPosx(),GAME->misil1->getPosy());
-}
-
-void MainWindow::crono()
-{
-    seg++;
-    if (seg==60){
-        min++;
-        seg=0;
-    }
-    if (seg%7==0){
-        nbfuego++;
-        posYAv=(GAME->air->getPosy());
-        GAME->act_bfuego(posYAv,nivel,nbfuego);
-        timer_Bfuego->start(10);
-    }
-    contador1->start(1000);
-    QString texto = QString("%1:%2").arg(min).arg(seg);
-    ui->cronometro->setText(texto);
-    Actpuntaje(seg);
-}
-
-void MainWindow::Actpuntaje(int seg)
-{
-    if(seg>0){
-        puntaje=puntaje+(((seg+2)/2)/4);
-        QString puntajeS = QString("Puntaje: %1").arg(puntaje);
-        ui->puntaje->setText(puntajeS);
-    }
-    if(puntaje<0){
-        seg=0;
-        puntaje=0;
-        ui->perdiste->show();
-        timer_Bfuego->stop();
-        contador1->stop();
-        GAME->air->hide();
-//        if(nivel==1){
-//            mundo1->removeItem(GAME->air);
-//            delete GAME->air;
-//        }
-    }
-}
-
-void MainWindow::on_perdiste_clicked()
-{
-    vermenu();
-}
-
-MainWindow::~MainWindow()
-{
-    delete ui;
+    //    }
 }
 
 //void MainWindow::ActBola(int y,int nivel)
