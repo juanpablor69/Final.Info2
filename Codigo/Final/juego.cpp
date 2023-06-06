@@ -15,17 +15,17 @@ void Juego::escena_Menu()
 
 void Juego::Funlimites()
 {
-    limite.push_back(new Limites(0,0,736,5));
+    limite.push_back(new Limites(0,0,736,10));
     mundo1->addItem(limite.back());
-    limite.push_back(new Limites(0,0,5,414));
+    limite.push_back(new Limites(0,0,10,414));
     mundo1->addItem(limite.back());
-    limite.push_back(new Limites(368,0,5,414));
+    limite.push_back(new Limites(368,0,10,414));
     mundo1->addItem(limite.back());
-    limite.push_back(new Limites(0,207,736,5));
+    limite.push_back(new Limites(0,207,736,10));
     mundo1->addItem(limite.back());
 }
 
-void Juego::nivel_1()
+void Juego::nivel_1(int nivel)
 {
     nivel=1;
     mundo1 = new QGraphicsScene;
@@ -38,7 +38,7 @@ void Juego::nivel_1()
     //    manejoColisione();
 }
 
-void Juego::nivel_2()
+void Juego::nivel_2(int nivel)
 {
     nivel=2;
     mundo2 = new QGraphicsScene;
@@ -67,8 +67,8 @@ void Juego::act_bfuego(int y,int nivel,int nbolas)
         bolasf.insert(nbolas, BFuego);
         mundo2->addItem(BFuego);
     }
-{
-//    BFuego=new Bolafuego(240, y, 15, nivel);
+/*    BFuego=new Bolafuego(240, y, 15, nivel);
+ *
 //    bolasf.push_back(BFuego);
 //    mundo1->addItem(bolasf.back());
 
@@ -78,34 +78,10 @@ void Juego::act_bfuego(int y,int nivel,int nbolas)
 //    BFuego=new Bolafuego(240,y,15,nivel);
 //    mundo1->addItem(BFuego);
     }
+}*/
 }
 
-void Juego::act_bala(int y,int nbalas,int nivel)
-{
-    balas=new Bala(240,y,40,15,nivel);
-    balasmap.insert(nbalas, balas);
-    mundo1->addItem(balas);
-}
-
-
-bool Juego::ColAv_lim() //COLISION AVION CONTRA LIMITES DEL JUEGO - 342
-{
-    QList<Limites*>::Iterator it;
-    for(it=limite.begin();it!=limite.end();it++)
-    {
-        if((*it)->collidesWithItem(air))
-            return true;
-    }
-    return false;
-}
-
-//void Juego::Act_MovFuego() NO CONECTO DESDE JUEGO A MAINWINDOW
-//{
-//    bolasf.back()->MovRectilineo();
-//    bolasf.back()->setPos(bolasf.back()->getPosx(),bolasf.back()->getPosy());
-//}
-
-bool Juego::ColAv_BolasF(int nbolas)
+bool Juego::ColAv_BolasF(int nbolas,int nivel)
 {
     if (bolasf.value(nbolas)->collidesWithItem(air)){
         if(nivel==1){
@@ -133,7 +109,7 @@ bool Juego::ColAv_BolasF(int nbolas)
 
     return false;
 
-//    QList<Bolafuego*>::iterator it;  // Cambio de QList<Bolafuego*>::iterator a QList<Bolafuego>::iterator
+/*    QList<Bolafuego*>::iterator it;  // Cambio de QList<Bolafuego*>::iterator a QList<Bolafuego>::iterator
 //    for (it = bolasf.begin(); it != bolasf.end(); it++) {
 //        if (air->collidesWithItem((*it))) {
 //            return true;
@@ -146,9 +122,57 @@ bool Juego::ColAv_BolasF(int nbolas)
 //        }
 //    }
 //    return false;
+*/
 }
 
-//void Juego::manejoColisione()
+void Juego::act_bala(int y,int nbalas,int nivel)
+{
+    balas=new Bala(240,y,40,15,nivel);
+    balasmap.insert(nbalas, balas);
+    mundo1->addItem(balas);
+}
+
+bool Juego::ColAv_Bala(int nbalas)
+{
+    if (balasmap.value(nbalas)->collidesWithItem(air)){
+//        if(nivel==1){
+            mundo1->removeItem(balasmap.value(nbalas));
+            balasmap.remove(nbalas);
+            return true;
+//        }
+//        else if(nivel==2){
+//            mundo2->removeItem(balasmap.value(nbalas));
+//            balasmap.remove(nbalas);
+//            return true;
+//        }
+    }
+    if (balasmap.value(nbalas)->getPosx()==0){
+        mundo1->removeItem(balasmap.value(nbalas));
+        balasmap.remove(nbalas);
+    }
+    return false;
+}
+
+bool Juego::ColAv_lim() //COLISION AVION CONTRA LIMITES DEL JUEGO - 342
+{
+    QList<Limites*>::Iterator it;
+    for(it=limite.begin();it!=limite.end();it++)
+    {
+        if((*it)->collidesWithItem(air))
+            return true;
+    }
+    return false;
+}
+
+/*void Juego::Act_MovFuego() NO CONECTÓ DESDE JUEGO A MAINWINDOW
+//{
+//    bolasf.back()->MovRectilineo();
+//    bolasf.back()->setPos(bolasf.back()->getPosx(),bolasf.back()->getPosy());
+//}*/
+
+
+
+/*void Juego::manejoColisione()
 //{
 //    if(!bolasf.empty()){
 //        int contador=0;
@@ -163,6 +187,7 @@ bool Juego::ColAv_BolasF(int nbolas)
 //        }
 //    }
 //}
+*/
 
 
 

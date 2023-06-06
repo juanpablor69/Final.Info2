@@ -12,22 +12,20 @@ MainWindow::MainWindow(QWidget *parent)
     timer= new QTimer(); //MISIL
     connect(timer,SIGNAL(timeout()),this,SLOT(Actualizar()));
 
-//    timer_Bfuego = new QTimer(GAME); //BOLAS DE FUEGO
-//    connect(timer_Bfuego, SIGNAL(timeout()), GAME, SLOT(Act_MovFuego()));
-
     timer_Bfuego= new QTimer(); //BOLAS DE FUEGO
     connect(timer_Bfuego,SIGNAL(timeout()),this,SLOT(Act_MovFuego()));
 
     contador1=new QTimer(); //CRONOMETRO
     connect(contador1,SIGNAL(timeout()),this,SLOT(crono()));
 
-    tbalas=new QTimer();
-    connect(timer_Bfuego,SIGNAL(timeout()),this,SLOT(Act_MovBala()));
+    tbalas=new QTimer(); //BALAS
+    connect(tbalas,SIGNAL(timeout()),this,SLOT(Act_MovBala()));
 
 }
 
 void MainWindow::vermenu()
 {
+    ui->titulo->show();
     GAME->escena_Menu();
     ui->graphicsView->setScene(GAME->menu);
     ui->cronometro->hide();
@@ -53,11 +51,10 @@ void MainWindow::on_nivel1_clicked()
     ui->nivel2->hide();
     ui->puntaje->show();
     ui->cronometro->show();
-        ui->label_col->show();
-    GAME->nivel_1();
+    ui->label_col->show();
+    GAME->nivel_1(nivel);
     nivel=1;
     ui->graphicsView->setScene(GAME->mundo1);
-//    GAME->Funlimites();
     crono();
     GAME->Funlimites();
 }
@@ -66,7 +63,7 @@ void MainWindow::on_nivel2_clicked()
 {
     seg=0;
     nivel=2;
-    GAME->nivel_2();
+    GAME->nivel_2(nivel);
     ui->graphicsView->setScene(GAME->mundo2);
     ui->titulo->hide();
     ui->nivel1->hide();
@@ -149,6 +146,7 @@ void MainWindow::crono()
         GAME->act_bala(posYAv,nbalas,nivel);
         tbalas->start(10);
     }
+
 //    contador1->start(1000);
     QString texto = QString("%1:%2").arg(min).arg(seg);
     ui->cronometro->setText(texto);
@@ -171,25 +169,9 @@ void MainWindow::Actpuntaje(int seg)
 //        GAME->air->hide();
 //        if(nivel==1){
             GAME->mundo1->removeItem(GAME->air);
-            delete GAME->air;
+//            delete GAME->air;
 //        }
     }
-}
-
-void MainWindow::on_perdiste_clicked()
-{
-    seg=0;
-    vermenu();
-}
-
-void MainWindow::on_ganaste_clicked()
-{
-    on_nivel2_clicked();
-}
-
-MainWindow::~MainWindow()
-{
-    delete ui;
 }
 
 void MainWindow::Act_MovBala()
@@ -204,6 +186,18 @@ void MainWindow::Act_MovBala()
         // Realizar las operaciones necesarias
         bala->MovRectilineo();
         bala->setPos(bala->getPosx(), bala->getPosy());
+        if(GAME->ColAv_Bala(nbalas)){
+            coli++;
+            QString col = QString("Coli %1").arg(coli);
+            ui->label_col->setText(col);
+            puntaje-=40;
+        }
+    }
+    else{
+        conlista++;
+        QString listaS = QString("LVacia %1").arg(conlista);
+//        QString listaS = QString("nivel %1").arg(nivel);
+        ui->lista->setText(listaS);
     }
 }
 
@@ -219,20 +213,21 @@ void MainWindow::Act_MovFuego()
         // Realizar las operaciones necesarias
         bolafuego->MovRectilineo();
         bolafuego->setPos(bolafuego->getPosx(), bolafuego->getPosy());
-        if(GAME->ColAv_BolasF(nbfuego)){
-            coli++;
-            QString col = QString("Coli %1").arg(coli);
-            ui->label_col->setText(col);
+        if(GAME->ColAv_BolasF(nbfuego,nivel)){ // ---> COLISION AVION - BOLAS DE FUEGO
+//            coli++;
+//            QString col = QString("Coli %1").arg(coli);
+//            ui->label_col->setText(col);
             puntaje-=80; //PENA POR COLISION
         }
-    }else{ //AUMENTA SI HAY ERROR EN LISTA
-        conlista++;
-        QString listaS = QString("LVacia %1").arg(conlista);
-//        QString listaS = QString("nivel %1").arg(nivel);
-        ui->lista->setText(listaS);
     }
+//    else{ //AUMENTA SI HAY ERROR EN LISTA
+//        conlista++;
+//        QString listaS = QString("LVacia %1").arg(conlista);
+////        QString listaS = QString("nivel %1").arg(nivel);
+//        ui->lista->setText(listaS);
+//    }
 
-//    GAME->bolasf.back()->MovRectilineo();
+/*    GAME->bolasf.back()->MovRectilineo();
 //    GAME->bolasf.back()->setPos(bolasf.back()->getPosx(),bolasf.back()->getPosy());
 
 //    if (GAME->bolasf.isEmpty()) {
@@ -252,9 +247,26 @@ void MainWindow::Act_MovFuego()
 //        QString puntaje1 = QString("Puntaje: %1").arg(puntaje);
 //        ui->cronometro->setText(puntaje1);
     //    }
+*/
 }
 
-//void MainWindow::ActBola(int y,int nivel)
+void MainWindow::on_perdiste_clicked()
+{
+    seg=0;
+    vermenu();
+}
+
+void MainWindow::on_ganaste_clicked()
+{
+    on_nivel2_clicked();
+}
+
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
+
+/*void MainWindow::ActBola(int y,int nivel)
 //{
 //    Bolafuego bolafuego(240, y, 15, nivel);
 //    bolasf.push_back(bolafuego);
@@ -277,5 +289,5 @@ void MainWindow::Act_MovFuego()
 //        QString puntaje1 = QString("Puntaje: %1").arg(puntaje);
 //        ui->cronometro->setText(puntaje1);
 //    }
-//}
+//}*/
 

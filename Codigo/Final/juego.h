@@ -31,18 +31,20 @@ public:
 //    map<*misil1,int>;
 
     int posXAv,posYAv;
-    int nivel=0,puntaje=0;
+//    int nivel=0;
+//    int puntaje=0;
 
     void escena_Menu(); //Funcion para configurar el menu
     void Funlimites();
-    void nivel_1();
-    void nivel_2();
+    void nivel_1(int nivel);
+    void nivel_2(int nivel);
     void act_misil(int,int);
     void act_bfuego(int,int,int);
     void act_bala(int y,int nbalas,int nivel);
+
     bool ColAv_lim(); //COLISION AVION CONTRA LIMITES DEL JUEGO
-    bool ColAv_BolasF(int);
-    void manejoColisione();
+    bool ColAv_BolasF(int nbolas,int nivel);
+    bool ColAv_Bala(int balas);
 //    bool ColAv_BolasF(int,int nivel);
 //    void Act_MovFuego();
 //    bool ColMil_lim();
