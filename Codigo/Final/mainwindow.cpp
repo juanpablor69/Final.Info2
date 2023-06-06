@@ -30,6 +30,8 @@ void MainWindow::vermenu()
     ui->perdiste->hide();
     ui->nivel1->show();
     ui->nivel2->show();
+    ui->puntaje->hide();
+    ui->label_col->hide();
 }
 
 void MainWindow::escena_Menu()
@@ -44,26 +46,34 @@ void MainWindow::on_nivel1_clicked()
     ui->titulo->hide();
     ui->nivel1->hide();
     ui->nivel2->hide();
+    ui->puntaje->show();
     ui->cronometro->show();
+        ui->label_col->show();
     GAME->nivel_1();
     nivel=1;
     ui->graphicsView->setScene(GAME->mundo1);
-    GAME->Funlimites();
+//    GAME->Funlimites();
     crono();
+    GAME->Funlimites();
 }
 
 void MainWindow::on_nivel2_clicked()
 {
+    seg=0;
+    nivel=2;
+    GAME->nivel_2();
+    ui->graphicsView->setScene(GAME->mundo2);
     ui->titulo->hide();
     ui->nivel1->hide();
     ui->nivel2->hide();
+    ui->puntaje->show();
     ui->cronometro->show();
-    GAME->nivel_1();
-    nivel=2;
-    ui->graphicsView->setScene(GAME->mundo1);
+    ui->label_col->show();
+    ui->lista->show();
     GAME->Funlimites();
     crono();
 }
+
 void MainWindow::keyPressEvent(QKeyEvent *evento)
 {
     if(evento->key()==Qt::Key_W) //Arriba
@@ -107,16 +117,16 @@ void MainWindow::Act_MovFuego()
         // Realizar las operaciones necesarias
         bolafuego->MovRectilineo();
         bolafuego->setPos(bolafuego->getPosx(), bolafuego->getPosy());
-        if(!GAME->ColAv_BolasF(nbfuego)){
+        if(GAME->ColAv_BolasF(nbfuego)){
             coli++;
-            QString col = QString("No coli %1").arg(coli);
+            QString col = QString("Coli %1").arg(coli);
             ui->label_col->setText(col);
-        }else{
-            puntaje-=27; //PENA POR COLISION
+            puntaje-=80; //PENA POR COLISION
         }
     }else{ //AUMENTA SI HAY ERROR EN LISTA
         conlista++;
         QString listaS = QString("LVacia %1").arg(conlista);
+//        QString listaS = QString("nivel %1").arg(nivel);
         ui->lista->setText(listaS);
     }
 
@@ -183,6 +193,10 @@ void MainWindow::Actpuntaje(int seg)
         timer_Bfuego->stop();
         contador1->stop();
         GAME->air->hide();
+//        if(nivel==1){
+//            mundo1->removeItem(GAME->air);
+//            delete GAME->air;
+//        }
     }
 }
 

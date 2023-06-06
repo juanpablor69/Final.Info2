@@ -669,7 +669,7 @@
      </font>
     </property>
     <property name="text">
-     <string/>
+     <string>lista</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_col">
@@ -688,7 +688,7 @@
      </font>
     </property>
     <property name="text">
-     <string/>
+     <string>coll</string>
     </property>
    </widget>
    <widget class="QToolButton" name="perdiste">

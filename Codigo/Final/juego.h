@@ -23,9 +23,9 @@ public:
     Misil *misil1;
     Bolafuego *BFuego;
     QList<Limites*>limite;
+    QMap<int, Bolafuego*> bolasf;
 //    QList<Bolafuego*>bolasf;
 //    map<*misil1,int>;
-    QMap<int, Bolafuego*> bolasf;
 
     int posXAv,posYAv;
     int nivel=0,puntaje=0;
@@ -36,10 +36,11 @@ public:
     void nivel_2();
     void act_misil(int,int);
     void act_bfuego(int,int,int);
-//    void Act_MovFuego();
     bool ColAv_lim(); //COLISION AVION CONTRA LIMITES DEL JUEGO
+//    bool ColAv_BolasF(int,int nivel);
     bool ColAv_BolasF(int);
     void manejoColisione();
+//    void Act_MovFuego();
 //    bool ColMil_lim();
 //    void mostrar();
 

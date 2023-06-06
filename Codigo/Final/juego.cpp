@@ -27,6 +27,7 @@ void Juego::Funlimites()
 
 void Juego::nivel_1()
 {
+    nivel=1;
     mundo1 = new QGraphicsScene;
     mundo1->setSceneRect(0,0,736,414);
     mundo1->setBackgroundBrush(QImage(":/images/video_preview_0000.jpg").scaled(736,414));
@@ -39,12 +40,13 @@ void Juego::nivel_1()
 
 void Juego::nivel_2()
 {
+    nivel=2;
     mundo2 = new QGraphicsScene;
     mundo2->setSceneRect(0,0,736,414);
     mundo2->setBackgroundBrush(QImage(":/images/nivel2.jpg").scaled(736,414));
 
     air=new Avion(15,15,46,13);
-    mundo1->addItem(air);
+    mundo2->addItem(air);
 }
 
 void Juego::act_misil(int x, int y) // ACTIVAR MISIL
@@ -55,9 +57,16 @@ void Juego::act_misil(int x, int y) // ACTIVAR MISIL
 
 void Juego::act_bfuego(int y,int nivel,int nbolas)
 {
-    BFuego = new Bolafuego(240, y, 15,15, nivel,nbolas);
-    bolasf.insert(nbolas, BFuego);
-    mundo1->addItem(BFuego);
+    if(nivel==1){
+        BFuego = new Bolafuego(240, y, 15,15, nivel,nbolas);
+        bolasf.insert(nbolas, BFuego);
+        mundo1->addItem(BFuego);
+    }
+    else if(nivel==2){
+        BFuego = new Bolafuego(240, y, 15,15, nivel,nbolas);
+        bolasf.insert(nbolas, BFuego);
+        mundo2->addItem(BFuego);
+    }
 
 //    BFuego=new Bolafuego(240, y, 15, nivel);
 //    bolasf.push_back(BFuego);
@@ -90,15 +99,29 @@ bool Juego::ColAv_lim() //COLISION AVION CONTRA LIMITES DEL JUEGO - 342
 bool Juego::ColAv_BolasF(int nbolas)
 {
     if (bolasf.value(nbolas)->collidesWithItem(air)){
-        mundo1->removeItem(bolasf.value(nbolas));
-        bolasf.remove(nbolas);
-        return true;
+        if(nivel==1){
+            mundo1->removeItem(bolasf.value(nbolas));
+            bolasf.remove(nbolas);
+            return true;
+        }
+        else if(nivel==2){
+            mundo2->removeItem(bolasf.value(nbolas));
+            bolasf.remove(nbolas);
+            return true;
+        }
 //        delete bolasf[nbolas];
     }
     if (bolasf.value(nbolas)->getPosx()<0){
-        mundo1->removeItem(bolasf.value(nbolas));
-        bolasf.remove(nbolas);
+        if(nivel==1){
+            mundo1->removeItem(bolasf.value(nbolas));
+            bolasf.remove(nbolas);
+        }
+        else if(nivel==2){
+            mundo2->removeItem(bolasf.value(nbolas));
+            bolasf.remove(nbolas);
+        }
     }
+
     return false;
 
 //    QList<Bolafuego*>::iterator it;  // Cambio de QList<Bolafuego*>::iterator a QList<Bolafuego>::iterator

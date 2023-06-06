@@ -200,8 +200,8 @@ public:
         cronometro->setText(QApplication::translate("MainWindow", "Puntaje: ", nullptr));
         nivel2->setText(QApplication::translate("MainWindow", "DIFICIL", nullptr));
         puntaje->setText(QString());
-        lista->setText(QString());
-        label_col->setText(QString());
+        lista->setText(QApplication::translate("MainWindow", "lista", nullptr));
+        label_col->setText(QApplication::translate("MainWindow", "coll", nullptr));
         perdiste->setText(QApplication::translate("MainWindow", "PERDISTE. VOLVER AL MEN\303\232", nullptr));
     } // retranslateUi
 
