@@ -43,7 +43,7 @@
      <cursorShape>ClosedHandCursor</cursorShape>
     </property>
     <property name="text">
-     <string>Nivel 1</string>
+     <string>FACIL</string>
     </property>
    </widget>
    <widget class="QLabel" name="titulo">
@@ -578,10 +578,10 @@
    <widget class="QPushButton" name="nivel2">
     <property name="geometry">
      <rect>
-      <x>310</x>
+      <x>300</x>
       <y>240</y>
-      <width>121</width>
-      <height>41</height>
+      <width>151</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="font">
@@ -594,7 +594,7 @@
      <cursorShape>ClosedHandCursor</cursorShape>
     </property>
     <property name="text">
-     <string>Nivel 2</string>
+     <string>DIFICIL</string>
     </property>
    </widget>
    <widget class="QLabel" name="puntaje">
@@ -606,6 +606,43 @@
       <height>21</height>
      </rect>
     </property>
+    <property name="palette">
+     <palette>
+      <active>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </active>
+      <inactive>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </inactive>
+      <disabled>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>120</red>
+          <green>120</green>
+          <blue>120</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </disabled>
+     </palette>
+    </property>
     <property name="font">
      <font>
       <family>Showcard Gothic</family>
@@ -613,7 +650,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Puntaje: </string>
+     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="lista">
@@ -652,6 +689,25 @@
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="perdiste">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>150</y>
+      <width>231</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Showcard Gothic</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>PERDISTE. VOLVER AL MENÚ</string>
     </property>
    </widget>
   </widget>

@@ -5,11 +5,12 @@ Bolafuego::Bolafuego()
 
 }
 
-Bolafuego::Bolafuego(double x,double y, double r,int nivel,int n)
+Bolafuego::Bolafuego(double x,double y, double w,double h,int nivel,int n)
 {
     this->posx=x;
     this->posy=y;
-    this->radio=r;
+    this->ancho=w;
+    this->largo=h;
     this->velocidad=(90*nivel)/2;
     this->nbolas=n;
     setPos(posx,posy);
@@ -17,7 +18,7 @@ Bolafuego::Bolafuego(double x,double y, double r,int nivel,int n)
 
 QRectF Bolafuego::boundingRect() const
 {
-    return QRectF(2*posx,2*posy,2*radio,2*radio);
+    return QRectF(2*posx,2*posy,2*ancho,2*largo);
 }
 
 void Bolafuego::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)

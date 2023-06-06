@@ -18,7 +18,7 @@ class Juego: public QObject, public QGraphicsPixmapItem
 {
 public:
     Juego();
-    QGraphicsScene *menu, *mundo1;
+    QGraphicsScene *menu, *mundo1, *mundo2;
     Avion *air;
     Misil *misil1;
     Bolafuego *BFuego;
@@ -33,6 +33,7 @@ public:
     void escena_Menu(); //Funcion para configurar el menu
     void Funlimites();
     void nivel_1();
+    void nivel_2();
     void act_misil(int,int);
     void act_bfuego(int,int,int);
 //    void Act_MovFuego();

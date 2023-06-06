@@ -7,14 +7,15 @@
 
 class Avion: public QGraphicsItem
 {
-    int posx, posy, radio,velocidad, vida;
+    int posx, posy, ancho,largo,velocidad, vida;
 public:
     Avion();
-    Avion(int x,int y,int r);
+    Avion(int x,int y,int w,int h);
     QRectF boundingRect() const ;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,QWidget *widget = nullptr);
     void MovArriba();
     void MovAbajo();
+    void MovDerecha();
 
     double getPosx() const;
     double getPosy() const;

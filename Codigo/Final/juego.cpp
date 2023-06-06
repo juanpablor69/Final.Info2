@@ -31,10 +31,20 @@ void Juego::nivel_1()
     mundo1->setSceneRect(0,0,736,414);
     mundo1->setBackgroundBrush(QImage(":/images/video_preview_0000.jpg").scaled(736,414));
 
-    air=new Avion(15,15,40);
+    air=new Avion(15,15,46,13);
     mundo1->addItem(air);
 
-//    manejoColisione();
+    //    manejoColisione();
+}
+
+void Juego::nivel_2()
+{
+    mundo2 = new QGraphicsScene;
+    mundo2->setSceneRect(0,0,736,414);
+    mundo2->setBackgroundBrush(QImage(":/images/nivel2.jpg").scaled(736,414));
+
+    air=new Avion(15,15,46,13);
+    mundo1->addItem(air);
 }
 
 void Juego::act_misil(int x, int y) // ACTIVAR MISIL
@@ -45,7 +55,7 @@ void Juego::act_misil(int x, int y) // ACTIVAR MISIL
 
 void Juego::act_bfuego(int y,int nivel,int nbolas)
 {
-    BFuego = new Bolafuego(240, y, 15, nivel,nbolas);
+    BFuego = new Bolafuego(240, y, 15,15, nivel,nbolas);
     bolasf.insert(nbolas, BFuego);
     mundo1->addItem(BFuego);
 
@@ -84,6 +94,10 @@ bool Juego::ColAv_BolasF(int nbolas)
         bolasf.remove(nbolas);
         return true;
 //        delete bolasf[nbolas];
+    }
+    if (bolasf.value(nbolas)->getPosx()<0){
+        mundo1->removeItem(bolasf.value(nbolas));
+        bolasf.remove(nbolas);
     }
     return false;
 

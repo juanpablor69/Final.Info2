@@ -10,12 +10,13 @@
 #include <cstdlib>
 #include <thread>
 #include <chrono>
+#include <QMessageBox>
 
 #include "juego.h"
 #include "avion.h"
 #include "misil.h"
 #include "limites.h"
-#include <bolafuego.h>
+#include "bolafuego.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -36,6 +37,10 @@ private slots:
     void Act_MovFuego();
     void crono();
 
+    void on_perdiste_clicked();
+
+    void on_nivel2_clicked();
+
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *menu, *mundo1;
@@ -51,7 +56,7 @@ private:
 
     int posXAv,posYAv; // Posicion del avion
     int seg=0,min=0;
-    int nivel=0,puntaje=0, conlista=0;
+    int nivel=0,puntaje=0,conlista=0;
     int nbfuego=0, coli=0;
 
     void keyPressEvent(QKeyEvent *evento);
@@ -64,6 +69,7 @@ private:
     void ColAvBFuegoMain();
     void DetColi();
     void ActBola(int y,int nivel);
+    void Actpuntaje(int seg);
 
 
 };

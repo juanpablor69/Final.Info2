@@ -264,6 +264,7 @@ debug/moc_mainwindow.cpp: ../Final/mainwindow.h \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/QCoreApplication \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qcoreapplication.h \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qeventloop.h \
+		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/QMap \
 		../Final/avion.h \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QGraphicsItem \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/QPainter \
@@ -607,6 +608,7 @@ debug/juego.o: ../Final/juego.cpp ../Final/juego.h \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/QCoreApplication \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qcoreapplication.h \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qeventloop.h \
+		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/QMap \
 		../Final/avion.h \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QGraphicsItem \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/QPainter \
@@ -841,6 +843,7 @@ debug/main.o: ../Final/main.cpp ../Final/mainwindow.h \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/QCoreApplication \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qcoreapplication.h \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qeventloop.h \
+		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/QMap \
 		../Final/avion.h \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QGraphicsItem \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/QPainter \
@@ -979,6 +982,7 @@ debug/mainwindow.o: ../Final/mainwindow.cpp ../Final/mainwindow.h \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/QCoreApplication \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qcoreapplication.h \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qeventloop.h \
+		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/QMap \
 		../Final/avion.h \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QGraphicsItem \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/QPainter \

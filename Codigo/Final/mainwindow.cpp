@@ -27,6 +27,9 @@ void MainWindow::vermenu()
     GAME->escena_Menu();
     ui->graphicsView->setScene(GAME->menu);
     ui->cronometro->hide();
+    ui->perdiste->hide();
+    ui->nivel1->show();
+    ui->nivel2->show();
 }
 
 void MainWindow::escena_Menu()
@@ -47,9 +50,20 @@ void MainWindow::on_nivel1_clicked()
     ui->graphicsView->setScene(GAME->mundo1);
     GAME->Funlimites();
     crono();
-//    ColAvBFuegoMain();
 }
 
+void MainWindow::on_nivel2_clicked()
+{
+    ui->titulo->hide();
+    ui->nivel1->hide();
+    ui->nivel2->hide();
+    ui->cronometro->show();
+    GAME->nivel_1();
+    nivel=2;
+    ui->graphicsView->setScene(GAME->mundo1);
+    GAME->Funlimites();
+    crono();
+}
 void MainWindow::keyPressEvent(QKeyEvent *evento)
 {
     if(evento->key()==Qt::Key_W) //Arriba
@@ -67,6 +81,11 @@ void MainWindow::keyPressEvent(QKeyEvent *evento)
         else
             GAME->air->MovArriba();
     }
+    else if(evento->key()==Qt::Key_D)
+    {
+        if (!GAME->ColAv_lim())
+            GAME->air->MovDerecha();
+    }
     else if(evento->key()==Qt::Key_Q) // ACTIVAR MISIL
     {
         posXAv=(GAME->air->getPosx())+5;
@@ -74,11 +93,6 @@ void MainWindow::keyPressEvent(QKeyEvent *evento)
         GAME->act_misil(posXAv,posYAv);
         timer->start(10);
     }
-}
-
-void MainWindow::DetColi()
-{
-
 }
 
 void MainWindow::Act_MovFuego()
@@ -97,6 +111,8 @@ void MainWindow::Act_MovFuego()
             coli++;
             QString col = QString("No coli %1").arg(coli);
             ui->label_col->setText(col);
+        }else{
+            puntaje-=27; //PENA POR COLISION
         }
     }else{ //AUMENTA SI HAY ERROR EN LISTA
         conlista++;
@@ -141,15 +157,38 @@ void MainWindow::crono()
         min++;
         seg=0;
     }
-    if (seg%5==0){
+    if (seg%7==0){
         nbfuego++;
-        posYAv=5+(GAME->air->getPosy());
+        posYAv=(GAME->air->getPosy());
         GAME->act_bfuego(posYAv,nivel,nbfuego);
         timer_Bfuego->start(10);
     }
     contador1->start(1000);
     QString texto = QString("%1:%2").arg(min).arg(seg);
     ui->cronometro->setText(texto);
+    Actpuntaje(seg);
+}
+
+void MainWindow::Actpuntaje(int seg)
+{
+    if(seg>0){
+        puntaje=puntaje+(((seg+2)/2)/4);
+        QString puntajeS = QString("Puntaje: %1").arg(puntaje);
+        ui->puntaje->setText(puntajeS);
+    }
+    if(puntaje<0){
+        seg=0;
+        puntaje=0;
+        ui->perdiste->show();
+        timer_Bfuego->stop();
+        contador1->stop();
+        GAME->air->hide();
+    }
+}
+
+void MainWindow::on_perdiste_clicked()
+{
+    vermenu();
 }
 
 MainWindow::~MainWindow()
@@ -181,3 +220,4 @@ MainWindow::~MainWindow()
 //        ui->cronometro->setText(puntaje1);
 //    }
 //}
+

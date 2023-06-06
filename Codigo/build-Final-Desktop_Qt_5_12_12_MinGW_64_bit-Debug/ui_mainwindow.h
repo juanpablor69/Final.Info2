@@ -30,9 +30,6 @@ public:
     QLabel *titulo;
     QLabel *cronometro;
     QPushButton *nivel2;
-    QLabel *puntaje;
-    QLabel *lista;
-    QLabel *label_col;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -152,18 +149,6 @@ public:
         nivel2->setGeometry(QRect(310, 240, 121, 41));
         nivel2->setFont(font);
         nivel2->setCursor(QCursor(Qt::ClosedHandCursor));
-        puntaje = new QLabel(centralwidget);
-        puntaje->setObjectName(QString::fromUtf8("puntaje"));
-        puntaje->setGeometry(QRect(570, 380, 101, 21));
-        puntaje->setFont(font2);
-        lista = new QLabel(centralwidget);
-        lista->setObjectName(QString::fromUtf8("lista"));
-        lista->setGeometry(QRect(460, 380, 101, 21));
-        lista->setFont(font2);
-        label_col = new QLabel(centralwidget);
-        label_col->setObjectName(QString::fromUtf8("label_col"));
-        label_col->setGeometry(QRect(340, 380, 101, 21));
-        label_col->setFont(font2);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -183,11 +168,8 @@ public:
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
         nivel1->setText(QApplication::translate("MainWindow", "Nivel 1", nullptr));
         titulo->setText(QApplication::translate("MainWindow", "WWT: THE MISSION", nullptr));
-        cronometro->setText(QApplication::translate("MainWindow", "Puntaje: ", nullptr));
+        cronometro->setText(QApplication::translate("MainWindow", "0:00", nullptr));
         nivel2->setText(QApplication::translate("MainWindow", "Nivel 2", nullptr));
-        puntaje->setText(QApplication::translate("MainWindow", "Puntaje: ", nullptr));
-        lista->setText(QString());
-        label_col->setText(QString());
     } // retranslateUi
 
 };
