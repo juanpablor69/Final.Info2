@@ -11,7 +11,7 @@ Bolafuego::Bolafuego(double x,double y, double w,double h,int nivel,int n)
     this->posy=y;
     this->ancho=w;
     this->largo=h;
-    this->velocidad=(90*nivel)/2;
+    this->velocidad=(80*nivel)/2;
     this->nbolas=n;
     setPos(posx,posy);
 }

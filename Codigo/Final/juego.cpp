@@ -13,16 +13,28 @@ void Juego::escena_Menu()
     menu->setBackgroundBrush(QImage(":/images/menu2.jpg"));
 }
 
-void Juego::Funlimites()
+void Juego::Funlimites(int nivel)
 {
     limite.push_back(new Limites(0,0,736,10));
-    mundo1->addItem(limite.back());
+    if(nivel==1)
+        mundo1->addItem(limite.back());
+    else if(nivel==2)
+        mundo2->addItem(limite.back());
     limite.push_back(new Limites(0,0,10,414));
-    mundo1->addItem(limite.back());
+    if(nivel==1)
+        mundo1->addItem(limite.back());
+    else if(nivel==2)
+        mundo2->addItem(limite.back());
     limite.push_back(new Limites(368,0,10,414));
-    mundo1->addItem(limite.back());
+    if(nivel==1)
+        mundo1->addItem(limite.back());
+    else if(nivel==2)
+        mundo2->addItem(limite.back());
     limite.push_back(new Limites(0,207,736,10));
-    mundo1->addItem(limite.back());
+    if(nivel==1)
+        mundo1->addItem(limite.back());
+    else if(nivel==2)
+        mundo2->addItem(limite.back());
 }
 
 void Juego::nivel_1(int nivel)
@@ -96,7 +108,7 @@ bool Juego::ColAv_BolasF(int nbolas,int nivel)
         }
 //        delete bolasf[nbolas];
     }
-    if (bolasf.value(nbolas)->getPosx()<0){
+    if (bolasf.value(nbolas)->getPosx()==-10 ){
         if(nivel==1){
             mundo1->removeItem(bolasf.value(nbolas));
             bolasf.remove(nbolas);
@@ -129,26 +141,36 @@ void Juego::act_bala(int y,int nbalas,int nivel)
 {
     balas=new Bala(240,y,40,15,nivel);
     balasmap.insert(nbalas, balas);
-    mundo1->addItem(balas);
+    if (nivel==1)
+        mundo1->addItem(balas);
+    else if (nivel==2){
+        mundo2->addItem(balas);
+    }
 }
 
-bool Juego::ColAv_Bala(int nbalas)
+bool Juego::ColAv_Bala(int nbalas,int nivel)
 {
     if (balasmap.value(nbalas)->collidesWithItem(air)){
-//        if(nivel==1){
+        if(nivel==1){
             mundo1->removeItem(balasmap.value(nbalas));
             balasmap.remove(nbalas);
             return true;
-//        }
-//        else if(nivel==2){
-//            mundo2->removeItem(balasmap.value(nbalas));
-//            balasmap.remove(nbalas);
-//            return true;
-//        }
+        }
+        else if(nivel==2){
+            mundo2->removeItem(balasmap.value(nbalas));
+            balasmap.remove(nbalas);
+            return true;
+        }
     }
     if (balasmap.value(nbalas)->getPosx()==0){
-        mundo1->removeItem(balasmap.value(nbalas));
-        balasmap.remove(nbalas);
+        if(nivel==1){
+            mundo1->removeItem(balasmap.value(nbalas));
+            balasmap.remove(nbalas);
+        }
+        else if (nivel==2){
+            mundo2->removeItem(balasmap.value(nbalas));
+            balasmap.remove(nbalas);
+        }
     }
     return false;
 }

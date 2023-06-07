@@ -11,5 +11,6 @@
         <file>avion.png</file>
         <file>avion1.png</file>
         <file>nivel2.jpg</file>
+        <file>help</file>
     </qresource>
 </RCC>

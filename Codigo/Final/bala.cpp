@@ -11,7 +11,7 @@ Bala::Bala(int x, int y, int w, int h,int nivel)
     this->posy=y;
     this->ancho=w;
     this->largo=h;
-    this->velocidad=(110*nivel)/2;
+    this->velocidad=(90*nivel)/2;
     setPos(posx,posy);
 }
 

@@ -35,7 +35,7 @@ public:
 //    int puntaje=0;
 
     void escena_Menu(); //Funcion para configurar el menu
-    void Funlimites();
+    void Funlimites(int nivel);
     void nivel_1(int nivel);
     void nivel_2(int nivel);
     void act_misil(int,int);
@@ -44,7 +44,7 @@ public:
 
     bool ColAv_lim(); //COLISION AVION CONTRA LIMITES DEL JUEGO
     bool ColAv_BolasF(int nbolas,int nivel);
-    bool ColAv_Bala(int balas);
+    bool ColAv_Bala(int nbalas,int nivel);
 //    bool ColAv_BolasF(int,int nivel);
 //    void Act_MovFuego();
 //    bool ColMil_lim();
