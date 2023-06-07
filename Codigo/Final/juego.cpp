@@ -13,6 +13,13 @@ void Juego::escena_Menu()
     menu->setBackgroundBrush(QImage(":/images/menu2.jpg"));
 }
 
+void Juego::ayuda()
+{
+    help = new QGraphicsScene ;
+    help->setSceneRect(0,0,736,414);
+    help->setBackgroundBrush(QImage(":/images/help").scaled(736,414));
+}
+
 void Juego::Funlimites(int nivel)
 {
     limite.push_back(new Limites(0,0,736,10));

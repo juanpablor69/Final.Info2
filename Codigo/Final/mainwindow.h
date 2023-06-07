@@ -45,6 +45,10 @@ private slots:
 
     void on_ganaste_clicked();
 
+    void on_ayuda_clicked();
+
+    void on_menu_clicked();
+
 private:
     Ui::MainWindow *ui;
 //    QGraphicsScene *menu, *mundo1;
@@ -73,7 +77,7 @@ private:
     void DetColi();
     void ActBola(int y,int nivel);
     void Actpuntaje(int seg);
-
+    void verayuda();
 
 };
 #endif // MAINWINDOW_H

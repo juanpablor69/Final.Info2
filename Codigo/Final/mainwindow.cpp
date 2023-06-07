@@ -32,6 +32,8 @@ void MainWindow::vermenu()
     ui->perdiste->hide();
     ui->nivel1->show();
     ui->nivel2->show();
+    ui->ayuda->show();
+    ui->menu->hide();
     ui->puntaje->hide();
     ui->label_col->hide();
     ui->ganaste->hide();
@@ -99,7 +101,7 @@ void MainWindow::keyPressEvent(QKeyEvent *evento)
         if (!GAME->ColAv_lim())
             GAME->air->MovDerecha();
     }
-    else if(evento->key()==Qt::Key_Q) // ACTIVAR MISIL
+    else if(evento->key()==Qt::Key_E) // ACTIVAR MISIL
     {
         posXAv=(GAME->air->getPosx())+5;
         posYAv=(GAME->air->getPosy())+5;
@@ -119,19 +121,17 @@ void MainWindow::Actualizar()
 void MainWindow::crono()
 {
     seg++;
-    if (seg<20){
+    if (seg<59){
         contador1->start(1000);
     }
-    if (seg==20){
+    if (seg==59){
         seg=0;
         ui->ganaste->show();
         timer_Bfuego->stop();
         contador1->stop();
         tbalas->stop();
-//        GAME->air->hide();
         if(nivel==1){
             GAME->mundo1->removeItem(GAME->air);
-//            delete GAME->air;
             GAME->mundo1->removeItem(GAME->bolasf.value(nbfuego));
             GAME->bolasf.remove(nbfuego);
         }
@@ -148,7 +148,6 @@ void MainWindow::crono()
         GAME->act_bala(posYAv,nbalas,nivel);
         tbalas->start(10);
     }
-//    contador1->start(1000);
     QString texto = QString("%1:%2").arg(min).arg(seg);
     ui->cronometro->setText(texto);
     Actpuntaje(seg);
@@ -176,14 +175,11 @@ void MainWindow::Actpuntaje(int seg)
 
 void MainWindow::Act_MovBala()
 {
-    if (!GAME->balasmap.isEmpty()) { // SI MAPA NO ESTA VACIA
+    if (!GAME->balasmap.isEmpty()) { // SI MAPA NO ESTA VACIO
         // Obtener el iterador al último elemento del mapa
         auto lastIterator = --GAME->balasmap.end();
-
-        // Acceder al puntero al último objeto Bolafuego
         Bala* bala = lastIterator.value();
 
-        // Realizar las operaciones necesarias
         bala->MovRectilineo();
         bala->setPos(bala->getPosx(), bala->getPosy());
         if(GAME->ColAv_Bala(nbalas,nivel)){
@@ -199,6 +195,18 @@ void MainWindow::Act_MovBala()
 //        QString listaS = QString("nivel %1").arg(nivel);
         ui->lista->setText(listaS);
     }
+}
+
+void MainWindow::on_perdiste_clicked()
+{
+    seg=0;
+    vermenu();
+}
+
+void MainWindow::on_ganaste_clicked()
+{
+    ui->ganaste->hide();
+    on_nivel2_clicked();
 }
 
 void MainWindow::Act_MovFuego()
@@ -250,18 +258,6 @@ void MainWindow::Act_MovFuego()
 */
 }
 
-void MainWindow::on_perdiste_clicked()
-{
-    seg=0;
-    vermenu();
-}
-
-void MainWindow::on_ganaste_clicked()
-{
-    ui->ganaste->hide();
-    on_nivel2_clicked();
-}
-
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -291,4 +287,22 @@ MainWindow::~MainWindow()
 //        ui->cronometro->setText(puntaje1);
 //    }
 //}*/
+
+
+void MainWindow::on_ayuda_clicked()
+{
+    GAME->ayuda();
+    ui->graphicsView->setScene(GAME->help);
+    ui->titulo->hide();
+    ui->nivel1->hide();
+    ui->nivel2->hide();
+    ui->ayuda->hide();
+    ui->menu->show();
+}
+
+
+void MainWindow::on_menu_clicked()
+{
+    vermenu();
+}
 

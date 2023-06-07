@@ -36,6 +36,8 @@ public:
     QLabel *label_col;
     QToolButton *perdiste;
     QToolButton *ganaste;
+    QPushButton *ayuda;
+    QPushButton *menu;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -183,6 +185,16 @@ public:
         ganaste->setObjectName(QString::fromUtf8("ganaste"));
         ganaste->setGeometry(QRect(250, 150, 231, 61));
         ganaste->setFont(font3);
+        ayuda = new QPushButton(centralwidget);
+        ayuda->setObjectName(QString::fromUtf8("ayuda"));
+        ayuda->setGeometry(QRect(340, 350, 80, 21));
+        QFont font4;
+        font4.setFamily(QString::fromUtf8("Showcard Gothic"));
+        ayuda->setFont(font4);
+        menu = new QPushButton(centralwidget);
+        menu->setObjectName(QString::fromUtf8("menu"));
+        menu->setGeometry(QRect(340, 350, 80, 21));
+        menu->setFont(font4);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -209,6 +221,8 @@ public:
         label_col->setText(QApplication::translate("MainWindow", "coll", nullptr));
         perdiste->setText(QApplication::translate("MainWindow", "PERDISTE. VOLVER AL MEN\303\232", nullptr));
         ganaste->setText(QApplication::translate("MainWindow", "ganaste. continua en dificil", nullptr));
+        ayuda->setText(QApplication::translate("MainWindow", "AYUDA", nullptr));
+        menu->setText(QApplication::translate("MainWindow", "men\303\272", nullptr));
     } // retranslateUi
 
 };

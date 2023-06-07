@@ -19,7 +19,7 @@ class Juego: public QObject, public QGraphicsPixmapItem
 {
 public:
     Juego();
-    QGraphicsScene *menu, *mundo1, *mundo2;
+    QGraphicsScene *menu, *mundo1, *mundo2,*help;
     Avion *air;
     Misil *misil1;
     Bolafuego *BFuego;
@@ -35,6 +35,7 @@ public:
 //    int puntaje=0;
 
     void escena_Menu(); //Funcion para configurar el menu
+    void ayuda();
     void Funlimites(int nivel);
     void nivel_1(int nivel);
     void nivel_2(int nivel);
